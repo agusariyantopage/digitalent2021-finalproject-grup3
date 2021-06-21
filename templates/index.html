@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Selamat Datang di Apps Qurban {% endblock %}</h1>
+    <div class="row">
+          <div class="col-12 col-sm-6 col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" height="200" src="https://duniasapi.com/media/k2/items/cache/75b44b0e9c2e5d305fa323c6c51d3476_Generic.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Data Hewan Qurban</h5>
+                  <p class="card-text" align="center"><b>{{ jumlahHewan }} Data({{ jumlahHewankilo }} Kg)</b> <br>{{ sapi }} Sapi ({{ sapikilo }} Kg) | {{ kambing }} Kambing ({{ kambingkilo }} Kg)</p>
+                  <a href="{{url_for('hewan')}}" class="btn btn-primary">Lihat Detail . . .</a>
+                </div>
+              </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" height="200" src="https://www.balipuspanews.com/wp-content/uploads/2017/09/Polres-klungkung-bagi-bagi-hewan-kurban.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Data Penerima</h5>
+                  <p class="card-text" align="center"><b>{{ jumlahPenerima }} Data</b> <br>{{ layak }} Layak | {{ belumLayak }} Belum Layak</p>
+                  <a href="{{url_for('penerima')}}" class="btn btn-primary">Lihat Detail . . .</a>
+                </div>
+              </div>
+          </div>
+          <!-- /.col -->         
+        </div>
+        <!-- /.row -->
+    
+{% endblock %}

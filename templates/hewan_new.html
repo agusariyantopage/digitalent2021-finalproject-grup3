@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Tambah Hewan Qurban {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="jenis">Jenis</label>
+        <input type="text" name="jenis"
+               placeholder="Masukkan Hewan Qurban" class="form-control"
+               value="{{ request.form['jenis'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="berat">Berat</label>
+        <input type="number" name="berat"
+               placeholder="Masukkan berat dalam kilogram" class="form-control"
+               value="{{ request.form['berat'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="keterangan">Keterangan</label>
+        <textarea name="keterangan" placeholder="Masukkan keterangan"
+                  class="form-control">{{ request.form['keterangan'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

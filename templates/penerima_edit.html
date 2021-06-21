@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Ubah Calon Penerima Qurban {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" name="nama" required=""
+               placeholder="Masukkan Nama Lengkap Calon Penerima" class="form-control"
+               value="{{ request.form['nama'] or post['nama'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="umur">Umur</label>
+        <input type="number" name="umur" required=""
+               placeholder="Masukkan Umur Calon Penerima" class="form-control"
+               value="{{ request.form['umur'] or post['umur'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="fakir">Apakah calon penerima tidak mempunyai harta atau hasil usaha(pekerjaan) untuk memenuhi kebutuhan pokoknya dan tanggungannya?</label>
+        <select name="fakir" class="form-control">
+            <option value="{{ request.form['fakir'] or post['fakir'] }}">
+                {% if post['fakir']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value=0>Tidak</option>
+            <option value=1>Ya</option>
+          </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="miskin">Apakah calon penerima mempunyai harta dan hasil usaha tetapi masih tidak mencukup untuk memenuhi kebutuhannya?</label>
+        <select name="miskin" class="form-control">
+            <option value="{{ request.form['miskin'] or post['miskin'] }}">
+                {% if post['miskin']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value=0>Tidak</option>
+            <option value=1>Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="fisabilillah">Apakah calon penerima adalah seorang veteran perang atau pengajar ngaji dilingkungannya?</label>
+        <select name="fisabilillah" class="form-control">
+            <option value="{{ request.form['fisabilillah'] or post['fisabilillah'] }}">
+                {% if post['fisabilillah']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value="0">Tidak</option>
+            <option value="1">Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="mualaf">Apakah calon penerima adalah orang yang baru pindah ke agama islam?</label>
+        <select name="mualaf" class="form-control">
+            <option value="{{ request.form['mualaf'] or post['mualaf'] }}">
+                {% if post['mualaf']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value="0">Tidak</option>
+            <option value="1">Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="gharim">Apakah calon penerima memiliki hutang yang tidak dapat dia tanggung?</label>
+        <select name="gharim" class="form-control">
+            <option value="{{ request.form['gharim'] or post['gharim'] }}">
+                {% if post['gharim']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value="0">Tidak</option>
+            <option value="1">Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="ibnusabil">Apakah calon penerima adalah orang yang terputus bekalnya dalam perjalanan / pengungsi / musafir dan para pelajar perantauan?</label>
+        <select name="ibnusabil" class="form-control">
+            <option value="{{ request.form['ibnusabil'] or post['ibnusabil'] }}">
+                {% if post['ibnusabil']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value="0">Tidak</option>
+            <option value="1">Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="amil">Apakah calon penerima adalah panitia pengelola dana zakat (amil)?</label>
+        <select name="amil" class="form-control">
+            <option value="{{ request.form['amil'] or post['amil'] }}">
+                {% if post['amil']==1 %}
+                    Ya
+                {% else %}
+                    Tidak
+                {% endif %}    
+            </option>
+            <option value="0">Tidak</option>
+            <option value="1">Ya</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

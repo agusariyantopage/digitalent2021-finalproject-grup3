@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Perhitungan Pembagian Bagi Rata {% endblock %}</h1>
+    <table class="table">
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Umur</th>
+        <th>Daging Sapi</th>
+        <th>Daging Kambing</th>
+        <th>Total Daging</th>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post['id'] }} </td>       
+                <td>{{ post['nama'] }} </td>       
+                <td>{{ post['umur'] }} </td>       
+                <td>{{ sapirata }} Kg </td>    
+                <td>{{ kambingrata }} Kg </td>       
+                <td>{{ dagingrata }} Kg </td>                      
+            <tr>
+         {% endfor %}
+    </table>
+{% endblock %}

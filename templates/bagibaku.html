@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <h1>{% block title %} Perhitungan Pembagian Baku {% endblock %}</h1>
+    <script>
+        var sisadaging = '{{ jumlahHewankilo }}';
+        var sisadagingkambing = '{{ kambingkilo }}';
+        var sisadagingsapi = '{{ sapikilo }}';
+        const params = new URLSearchParams(document.location.search);
+        const bagi = params.get("bagi");
+                
+        var pembagi = bagi;
+    // var sisadaging = 10;
+    </script>
+    
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Daging Kambing</th>
+            <th>Daging Sapi</th>
+            <th>Total Daging Ideal</th>
+        </thead>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post['id'] }} </td>       
+                <td>{{ post['nama'] }} </td>       
+                <td>{{ post['umur'] }} </td>       
+                <td>
+                    <script>
+                        //document.write(sisadagingkambing + " Kg")
+                        if(Number(sisadagingkambing)>0){
+                            if(Number(sisadagingkambing)-Number(pembagi)<0){
+                                sisaakhir=sisadagingkambing
+                                document.write(sisadagingkambing + " Kg")
+                                sisadagingkambing=sisadagingkambing-sisadagingkambing                                
+                            } else {
+                                sisadagingkambing=sisadagingkambing-pembagi
+                                document.write(pembagi + " Kg")
+                            }
+                        } else {
+                            sisadagingkambing=0
+                        }
+                    </script>
+                </td>
+                <td>
+                    <script>
+                        //document.write(sisadagingsapi + " Kg")
+                        // Sisa Dagin Kammbing 15 , Pembagi 20
+                        if(Number(sisadagingkambing)<pembagi&Number(sisadagingkambing)>0){ // Sapi dipakai hanya jika kambing habis
+                            //sisadagingsapi=sisadagingsapi-sisadagingkambing
+                            //document.write(pembagi + " Kg")
+                        } else {
+                            if(Number(sisadagingkambing)<=0){
+                                // sisadagingsapi=sisadagingsapi-pembagi
+                                if(Number(sisadagingsapi)>0){
+                                    if(Number(sisadagingsapi)-Number(pembagi)<0){
+                                        document.write(pembagi-sisaakhir + " Kg")
+                                        sisadagingsapi=sisadagingsapi-sisadagingsapi
+                                    } else {
+                                        if(Number(sisadagingkambing)==pembagi){
+                                                                                    
+                                        } else {
+                                            document.write(pembagi-sisaakhir + " Kg")
+                                            sisadagingsapi=sisadagingsapi-pembagi
+                                        }    
+                                    }
+                                } else {
+                                    sisadagingsapi=0
+                                }
+                            } else {
+                                sisadagingsapi=sisadagingsapi
+                            }   
+                        }
+                        sisaakhir=0
+                    </script>
+                </td>       
+                <td>
+                    <script>
+                        sisadaging=sisadaging-pembagi                        
+                        document.write(pembagi + "Kg")
+                    </script>
+                </td>                      
+            </tr>
+         {% endfor %}
+         <tr>
+            <td align="center" colspan="5"><b>Sisa Daging Kambing</b></td>                          
+            <td><b>
+                <script>                        
+                    document.write(sisadagingkambing + "Kg")
+                </script>
+                </b>
+            </td>                      
+        </tr>
+         <tr>
+            <td align="center" colspan="5"><b>Sisa Daging Sapi</b></td>                          
+            <td><b>
+                <script>                        
+                    document.write(Number(sisadaging)-Number(sisadagingkambing) + "Kg")
+                </script>
+                </b>
+            </td>                      
+        </tr>
+         <tr>
+            <td align="center" colspan="5"><b>Sisa Daging Total</b></td>                          
+            <td><b>
+                <script>                        
+                    document.write(sisadaging + "Kg")
+                </script>
+                </b>
+            </td>                      
+        </tr>
+    </table>
+{% endblock %}
